@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-555f6934b2b5c7ed1a8bc1b025da1e86"}, "mark": {"type": "line", "point": true}, "encoding": {"color": {"field": "business_information", "title": "Business metric", "type": "nominal"}, "tooltip": [{"field": "quarter", "title": "Quarter", "type": "nominal"}, {"field": "business_information", "title": "Business metric", "type": "nominal"}, {"field": "net_expectation", "format": ".1f", "title": "Net expectation", "type": "quantitative"}], "x": {"field": "quarter", "sort": ["Q3 2023", "Q4 2023", "Q1 2024", "Q2 2024"], "title": "Quarter", "type": "nominal"}, "y": {"field": "net_expectation", "title": "Net expectation (percentage points)", "type": "quantitative"}}, "height": 400, "title": "Net Business Expectations Over Time", "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-555f6934b2b5c7ed1a8bc1b025da1e86": [{"quarter": "Q4 2023", "business_information": "Employment", "decrease": 11.0, "increase": 10.5, "stay the same": 78.5, "net_expectation": -0.5}, {"quarter": "Q4 2023", "business_information": "Investment", "decrease": 10.0, "increase": 18.0, "stay the same": 57.1, "net_expectation": 8.0}, {"quarter": "Q4 2023", "business_information": "Profitability", "decrease": 36.1, "increase": 9.0, "stay the same": 52.2, "net_expectation": -27.1}, {"quarter": "Q4 2023", "business_information": "Sales", "decrease": 21.0, "increase": 15.7, "stay the same": 59.9, "net_expectation": -5.300000000000001}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
